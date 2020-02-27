@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.LoginActivity">
+
+    <!--忘记密码-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:layout_marginEnd="@dimen/dimen_16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/act_login_forgetpwd"
+            android:textColor="@color/txtColorWhite"/>
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_login"/>
+
+    <android.support.v7.widget.CardView
+        app:cardCornerRadius="2dp"
+        android:layout_marginRight="@dimen/dimen_32dp"
+        android:layout_marginLeft="@dimen/dimen_32dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:padding="@dimen/dimen_16dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/act_login_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/act_login_account"
+                android:layout_gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/act_login_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/act_login_pwd"
+                android:layout_gravity="center_vertical"
+                android:inputType="textPassword" />
+
+            <!--登录注册栏-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!--登录按钮-->
+                <Button
+                    android:id="@+id/act_login_login"
+                    android:background="@color/colorPrimary"
+                    android:layout_margin="@dimen/dimen_8dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="@dimen/dimen_56dp"
+                    android:text="@string/act_login_login"
+                    android:textColor="@color/txtColorWhite"/>
+
+                <!--注册按钮-->
+                <Button
+                    android:background="@color/colorPrimary"
+                    android:layout_margin="@dimen/dimen_8dp"
+                    android:id="@+id/act_login_reg"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="@dimen/dimen_56dp"
+                    android:text="@string/act_login_reg"
+                    android:textColor="@color/txtColorWhite"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

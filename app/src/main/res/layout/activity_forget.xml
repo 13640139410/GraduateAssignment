@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.ForgetActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <ImageView
+            android:id="@+id/act_forget_back"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back_48"/>
+
+        <TextView
+            android:layout_centerInParent="true"
+            android:text="@string/act_forget_forgetpwd"
+            android:textColor="@color/txtColorWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_login"/>
+
+    <android.support.v7.widget.CardView
+        app:cardCornerRadius="2dp"
+        android:layout_marginRight="@dimen/dimen_32dp"
+        android:layout_marginLeft="@dimen/dimen_32dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:padding="@dimen/dimen_16dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:gravity="center"
+                android:id="@+id/act_forget_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:hint="@string/act_forget_email"
+                android:layout_gravity="center_vertical" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!--确定按钮-->
+                <Button
+                    android:id="@+id/act_forget_sure"
+                    android:textColor="@color/txtColorWhite"
+                    android:background="@color/colorPrimary"
+                    android:layout_margin="@dimen/dimen_8dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="56dp"
+                    android:text="@string/act_forget_sure"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <TextView
+        android:layout_marginRight="@dimen/dimen_32dp"
+        android:layout_marginLeft="@dimen/dimen_32dp"
+        android:layout_marginTop="@dimen/dimen_8dp"
+        android:id="@+id/act_forget_tips"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="2"/>
+</LinearLayout>

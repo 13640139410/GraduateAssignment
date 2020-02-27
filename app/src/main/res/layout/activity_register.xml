@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.RegisterActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <ImageView
+            android:id="@+id/act_reg_back"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back_48"/>
+
+        <TextView
+            android:layout_centerInParent="true"
+            android:text="@string/act_reg_title"
+            android:textColor="@color/txtColorWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <ImageView
+        android:src="@drawable/icon_register"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_16dp"
+        android:layout_marginLeft="@dimen/dimen_16dp"
+        android:layout_marginRight="@dimen/dimen_16dp"
+        app:cardCornerRadius="6dp"
+        app:elevation="0dp">
+
+        <android.support.v4.widget.NestedScrollView
+            android:paddingTop="@dimen/dimen_24dp"
+            android:paddingBottom="@dimen/dimen_24dp"
+            android:paddingLeft="@dimen/dimen_16dp"
+            android:paddingRight="@dimen/dimen_16dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!--账户名称-->
+                <EditText
+                    android:id="@+id/act_reg_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:hint="@string/act_reg_account" />
+
+                <!--账户密码-->
+                <EditText
+                    android:id="@+id/act_reg_pwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:hint="@string/act_reg_pwd"
+                    android:inputType="textPassword" />
+
+                <!--账户确认密码-->
+                <EditText
+                    android:id="@+id/act_reg_surepwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:hint="@string/act_reg_surepwd"
+                    android:inputType="textPassword" />
+
+                <!--账户手机号码-->
+                <EditText
+                    android:id="@+id/act_reg_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:hint="@string/act_reg_phone" />
+
+                <!--账户邮箱-->
+                <EditText
+                    android:id="@+id/act_reg_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:hint="@string/act_reg_email"
+                    android:inputType="textEmailAddress" />
+
+                <!--用户签名-->
+                <EditText
+                    android:id="@+id/act_reg_signature"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:hint="@string/act_reg_signature" />
+
+                <!--注册按钮-->
+                <Button
+                    android:background="@color/colorPrimary"
+                    android:textColor="@color/txtColorWhite"
+                    android:id="@+id/act_reg_reg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/act_reg_reg" />
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </android.support.v7.widget.CardView>
+</LinearLayout>
