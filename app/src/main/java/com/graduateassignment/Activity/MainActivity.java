@@ -1,17 +1,26 @@
 package com.graduateassignment.Activity;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.graduateassignment.DB.ArticleCategory;
 import com.graduateassignment.Fragment.IndexFragment;
-import com.graduateassignment.Fragment.Test1Fragment;
-import com.graduateassignment.Fragment.Test2Fragment;
-import com.graduateassignment.Fragment.TestFragment;
+import com.graduateassignment.Fragment.TestBmobFileFragment;
+import com.graduateassignment.Fragment.TestRichEditorFragment;
 import com.graduateassignment.R;
+import com.graduateassignment.Util.SharedPreferencesUtil;
+import com.graduateassignment.Util.ToastUtil;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 import me.majiajie.pagerbottomtabstrip.NavigationController;
 import me.majiajie.pagerbottomtabstrip.PageNavigationView;
 import me.majiajie.pagerbottomtabstrip.listener.OnTabItemSelectedListener;
@@ -25,6 +34,7 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ArticlePreferenceInit();
         PageNavigationView tab = (PageNavigationView) findViewById(R.id.tab);
         navigationController = tab.material()
                 .addItem(R.drawable.ic_menu_mapmode, "明细",getResources().getColor(R.color.colorPrimaryDark))
@@ -39,10 +49,10 @@ public class MainActivity extends BaseActivity {
                         getFragment(new IndexFragment());
                         break;
                     case 1:
-                        getFragment(new Test1Fragment());
+                        getFragment(new TestBmobFileFragment());
                         break;
                     case 2:
-                        getFragment(new Test2Fragment());
+                        getFragment(new TestRichEditorFragment());
                         break;
                 }
             }
@@ -61,42 +71,25 @@ public class MainActivity extends BaseActivity {
 //                }
             }
         });
-//        PageNavigationView tab = (PageNavigationView) findViewById(R.id.tab);
-//        navigationController = tab.material()
-//                .addItem(R.drawable.ic_menu_mapmode, "首页",getResources().getColor(R.color.colorPrimaryDark))
-//                .addItem(android.R.drawable.ic_menu_add, "维修",getResources().getColor(R.color.colorPrimaryDark))
-//                .addItem(R.drawable.ic_menu_manage, "我的",getResources().getColor(R.color.colorPrimaryDark))
-//                .build();
-//        navigationController.addTabItemSelectedListener(new OnTabItemSelectedListener() {
-//            @Override
-//            public void onSelected(int index, int old) {
-//                switch (index) {
-//                    case 0://如果是0，即明细
-//                        getFragment(new TestFragment());
-//                        break;
-//                    case 1://如果是1，即添加账单
-//
-//                        break;
-//                    case 2://如果是2，即我的
-//
-//                        break;
-//                }
-//            }
-//            @Override
-//            public void onRepeat(int index) {
-//                switch (index){
-//                    case 0://如果是0，即明细
-//                        getFragment(new TestFragment());
-//                        break;
-//                    case 1://如果是1，即添加账单
-//
-//                        break;
-//                    case 2://如果是2，即我的
-//
-//                        break;
-//                }
-//            }
-//        });
+    }
+
+    private void ArticlePreferenceInit(){
+        final Set<String> articleCategorySet = SharedPreferencesUtil.getArticleCategory(this);
+        //如果未缓存文章类别，则进行缓存
+        if(articleCategorySet == null) {
+            BmobQuery<ArticleCategory> articleCategoryBmobQuery = new BmobQuery<ArticleCategory>();
+            articleCategoryBmobQuery.findObjects(new FindListener<ArticleCategory>() {
+                @Override
+                public void done(List<ArticleCategory> list, BmobException e) {
+                    ToastUtil.show(MainActivity.this,"获取到了数据");
+                    Set<String> stringSet = new HashSet<String>();
+                    for(ArticleCategory articleCategory: list){
+                        stringSet.add(articleCategory.getName());
+                    }
+                    SharedPreferencesUtil.putArticleCategory(MainActivity.this,stringSet);
+                }
+            });
+        }
     }
 
     private void getFragment(Fragment fragment) {
@@ -105,10 +98,4 @@ public class MainActivity extends BaseActivity {
         transaction.replace(R.id.fragment_main, fragment);
         transaction.commit();
     }
-//    private void getFragment(Fragment fragment) {
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        FragmentTransaction transaction = fragmentManager.beginTransaction();
-//        transaction.replace(R.id.fragment_main, fragment);
-//        transaction.commit();
-//    }
 }

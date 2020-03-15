@@ -5,23 +5,24 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.graduateassignment"
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
         }
     }
     useLibrary 'org.apache.http.legacy'
+
+
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -38,5 +39,7 @@ dependencies {
     compile 'com.contrarywind:Android-PickerView:3.2.6'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
     compile 'com.android.support:percent:25.3.1'
+    compile 'jp.wasabeef:richeditor-android:1.2.2'
+    compile 'org.jsoup:jsoup:1.9.2'
     testCompile 'junit:junit:4.12'
 }

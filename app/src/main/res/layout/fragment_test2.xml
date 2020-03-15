@@ -4,8 +4,14 @@
     android:layout_height="match_parent"
     tools:context="com.graduateassignment.Fragment.Test2Fragment">
 
+    <Button
+        android:id="@+id/frag_test2_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="按钮"/>
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/frag_test2_text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal|center_vertical"

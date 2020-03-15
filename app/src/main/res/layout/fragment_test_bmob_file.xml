@@ -1,0 +1,95 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.graduateassignment.Fragment.TestBmobFileFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:text="去往TestRichEditor"
+                android:id="@+id/frag_test_bmob_file_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <Button
+                android:text="判断文件在不在"
+                android:id="@+id/frag_test_isexist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/frag_test_bmobfile_togd_basic"
+                android:text="高德地图基本地图"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/frag_test_bmobfile_togd_events"
+                android:text="高德地图事件监听"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/frag_test_bmobfile_togd_uisettings"
+                android:text="高德地图UI设置"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/frag_test_bmobfile_togd_camera"
+                android:text="高德地图摄像头活动"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/frag_test_bmobfile_togd_location"
+                android:text="高德地图定位活动"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/frag_test_bmobfile_togd_district"
+                android:text="高德地图区域活动"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/frag_test_bmobfile_togd_districtbound"
+                android:text="高德地图区域限制活动"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/frag_test_bmob_file_tojsoup"
+                android:text="JSOUP测试活动"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/frag_test_bmob_file_mymap"
+                android:text="我的高德地图"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/frag_test_bmob_file_subpoisearch"
+                android:text="SubPoiSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/frag_test_bmob_file_marker"
+                android:text="地图标记活动"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/frag_test_bmob_file_custommarker"
+                android:text="自定义地图标记活动"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <!-- TODO: Update blank fragment layout -->
+            <ImageView
+                android:id="@+id/frag_test_bmob_file_img"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

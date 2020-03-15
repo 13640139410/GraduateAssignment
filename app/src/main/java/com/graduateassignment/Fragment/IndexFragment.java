@@ -37,8 +37,7 @@ public class IndexFragment extends Fragment {
     private TextView testTextView;
     private String jsonData;
 
-    public IndexFragment() {
-    }
+    public IndexFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -84,27 +83,5 @@ public class IndexFragment extends Fragment {
         brand.setIcon(R.drawable.icon_all_32);
         list.add(brand);
     }
-
-//    private void showJsonData(){
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                try {
-////                    OkHttpClient client = new OkHttpClient();
-////                    Request request = new Request.Builder()
-////                            // 指定访问的服务器地址是电脑本机
-////                            .url("http://v.juhe.cn/toutiao/index" +
-////                                    "type=keji&key=5b33c12abab23af938447323fc406d70")
-////                            .build();
-////                    Response response = client.newCall(request).execute();
-////                    jsonData = response.body().string();
-////                    Toast.makeText(mainActivity,"可以开启子线程",Toast.LENGTH_LONG).show();
-//                    jsonData = "asdasd";
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }).start();
-//    }
 
 }
