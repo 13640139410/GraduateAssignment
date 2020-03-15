@@ -37,8 +37,8 @@ public class MainActivity extends BaseActivity {
         ArticlePreferenceInit();
         PageNavigationView tab = (PageNavigationView) findViewById(R.id.tab);
         navigationController = tab.material()
-                .addItem(R.drawable.ic_menu_mapmode, "明细",getResources().getColor(R.color.colorPrimaryDark))
-                .addItem(android.R.drawable.ic_menu_add, "添加",getResources().getColor(R.color.colorPrimaryDark))
+                .addItem(R.drawable.ic_menu_mapmode, "首页",getResources().getColor(R.color.colorPrimaryDark))
+                .addItem(android.R.drawable.ic_menu_add, "维修",getResources().getColor(R.color.colorPrimaryDark))
                 .addItem(R.drawable.ic_menu_manage, "我的",getResources().getColor(R.color.colorPrimaryDark))
                 .build();
         navigationController.addTabItemSelectedListener(new OnTabItemSelectedListener() {

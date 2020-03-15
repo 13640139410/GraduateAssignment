@@ -79,7 +79,8 @@
         <activity android:name=".Activity.MaintenancePointNearbyActivity" />
         <activity android:name=".Activity.TestGdmapSubpoisearchActivity" />
         <activity android:name=".Activity.TestGdmapMarkerActivity" />
-        <activity android:name=".Activity.TestGdmapCustommarkerActivity"></activity>
+        <activity android:name=".Activity.TestGdmapCustommarkerActivity" />
+        <activity android:name=".Activity.ArticleActivity"></activity>
     </application>
 
 </manifest>
