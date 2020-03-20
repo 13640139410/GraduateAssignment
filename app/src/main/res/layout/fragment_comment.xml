@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.flipboard.bottomsheet.BottomSheetLayout
+    android:id="@+id/frag_comment_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?android:colorBackground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?android:colorBackground"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="Hello, World!"
+                />
+            <android.support.v4.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="500dp">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/frag_comment_comments"
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp" />
+            </android.support.v4.widget.NestedScrollView>
+        </LinearLayout>
+
+        <!--<LinearLayout-->
+            <!--android:id="@+id/frag_comment_replylayout"-->
+            <!--android:background="@color/white"-->
+            <!--android:padding="@dimen/dimen_4dp"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:visibility="gone"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+
+            <!--<EditText-->
+                <!--android:id="@+id/frag_comment_commentedittext"-->
+                <!--android:hint="友善的进行评论"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_weight="4"-->
+                <!--android:layout_height="wrap_content" />-->
+
+            <!--<TextView-->
+                <!--android:gravity="center_vertical|center_horizontal"-->
+                <!--android:text="@string/item_comment_reply_submitbtn"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:layout_height="wrap_content" />-->
+        <!--</LinearLayout>-->
+    </RelativeLayout>
+</com.flipboard.bottomsheet.BottomSheetLayout>
+
+

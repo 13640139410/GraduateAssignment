@@ -102,4 +102,10 @@ public class Article extends BmobObject {
     public void setIsReptile(String isReptile) {
         this.isReptile = isReptile;
     }
+
+    public String toString(){
+        return "title:"+this.getTitle()+
+                "\nauthor:"+this.getAuthor().getUsername()+
+                "\ndate:"+this.getUpdatedAt();
+    }
 }

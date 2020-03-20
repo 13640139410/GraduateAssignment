@@ -30,6 +30,14 @@
     <string name="window_addcategory">添加标签</string>
     <string name="window_surebtn">确认</string>
 
+    <!--评论碎片-->
+    <string name="item_comment_level1_more">查看回复</string>
+    <string name="item_comment_level1_comment">回复</string>
+
+    <!--回复评论碎片-->
+    <string name="item_comment_reply_submitbtn">发布</string>
+    <string name="item_comment_reply_edittexthint">友善评论是交流的基础~</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

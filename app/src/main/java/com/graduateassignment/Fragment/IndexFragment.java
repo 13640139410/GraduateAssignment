@@ -1,6 +1,7 @@
 package com.graduateassignment.Fragment;
 
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.graduateassignment.Activity.ArticleActivity;
 import com.graduateassignment.Activity.MainActivity;
 import com.graduateassignment.Adapter.ArticleAdapter;
 import com.graduateassignment.Adapter.BrandAdapter;
@@ -114,9 +116,9 @@ public class IndexFragment extends Fragment {
                         @Override
                         public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                             com.graduateassignment.DB.Article article = (com.graduateassignment.DB.Article) adapter.getItem(position);
-                            ToastUtil.show(mainActivity,"标题："+article.getTitle()+
-                                                            "\n内容ID："+article.getContent().getObjectId()+
-                                                            "\n作者："+article.getAuthor().getUsername());
+                            Intent intent = new Intent(mainActivity, ArticleActivity.class);
+                            intent.putExtra("article",article);
+                            mainActivity.startActivity(intent);
                         }
                     });
                     //为recyclerView设置适配器

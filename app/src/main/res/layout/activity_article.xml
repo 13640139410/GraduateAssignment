@@ -1,9 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.flipboard.bottomsheet.BottomSheetLayout
+    android:id="@+id/act_article_commentlayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.graduateassignment.Activity.ArticleActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                app:titleTextColor="@color/white"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:title="阅读好文">
+
+            </android.support.v7.widget.Toolbar>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!--头像-->
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:src="@drawable/test_avator"
+                    android:id="@+id/act_article_author_avator"
+                    android:layout_width="@dimen/dimen_32dp"
+                    android:layout_height="@dimen/dimen_32dp" />
+
+                <!--作者信息-->
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:layout_height="wrap_content">
+
+                    <!--名字-->
+                    <TextView
+                        android:textColor="@color/white"
+                        android:id="@+id/act_article_author_name"
+                        android:text="华为科技"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <!--签名-->
+                    <TextView
+                        android:textColor="@color/white"
+                        android:lines="1"
+                        android:ellipsize="end"
+                        android:id="@+id/act_article_author_signature"
+                        android:text="用心为大家提供最前线，最专业的咨询内容"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/act_article_focus"
+                    android:layout_width="70dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/btn_circle"
+                    android:gravity="center"
+                    android:text="关注"
+                    style="@style/roundbutton"
+                    />
+            </LinearLayout>
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/dimen_56dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <WebView
+                android:id="@+id/act_article_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+            </WebView>
+        </android.support.v4.widget.NestedScrollView>
+
+        <LinearLayout
+            android:id="@id/act_article_commentlayout"
+            android:background="@color/white"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_56dp">
+
+            <!--评论框-->
+            <EditText
+                android:inputType="text"
+                android:id="@+id/act_article_commentedittext"
+                android:focusableInTouchMode="true"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionSend"
+                android:layout_weight="4"/>
+
+            <TextView
+                android:id="@+id/act_article_like"
+                android:text="点赞"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/act_article_commentbtn"
+                android:text="评论"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:gravity="center_horizontal|center_vertical"
+                android:id="@+id/act_article_submitcomment"
+                android:text="发布"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </android.support.design.widget.CoordinatorLayout>
+</com.flipboard.bottomsheet.BottomSheetLayout>
+
