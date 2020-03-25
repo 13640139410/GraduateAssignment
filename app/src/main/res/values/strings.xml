@@ -26,6 +26,8 @@
     <string name="act_test_richeditor_title">撰写文章</string>
     <string name="act_test_richeditor_addcategory">添加标签</string>
     <string name="act_test_richeditor_submit">发布</string>
+    <!--忘记密码活动-->
+    <string name="act_forget_fail">该邮箱尚未注册</string>
     <!--添加标签窗口-->
     <string name="window_addcategory">添加标签</string>
     <string name="window_surebtn">确认</string>

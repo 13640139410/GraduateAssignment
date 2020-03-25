@@ -1,0 +1,20 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.graduateassignment.Fragment.MeIdolsFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/frag_myidols_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:visibility="gone"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="暂时还没有关注的用户呢~~"
+        android:id="@+id/frag_myidols_emptytext"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</FrameLayout>

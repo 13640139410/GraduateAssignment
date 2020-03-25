@@ -29,6 +29,7 @@ import com.graduateassignment.Activity.TestGdmapLocationActivity;
 import com.graduateassignment.Activity.TestGdmapMarkerActivity;
 import com.graduateassignment.Activity.TestGdmapUisettingsActivity;
 import com.graduateassignment.Activity.TestJsoupActivity;
+import com.graduateassignment.Activity.TestJsoupDataActivity;
 import com.graduateassignment.Activity.TestRicheditorActivity;
 import com.graduateassignment.Activity.TestGdmapSubpoisearchActivity;
 import com.graduateassignment.R;
@@ -176,6 +177,13 @@ public class TestBmobFileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), TestGdmapCustommarkerActivity.class);
+                startActivity(intent);
+            }
+        });
+        mainActivity.findViewById(R.id.frag_test_bmob_file_jsoup).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), TestJsoupDataActivity.class);
                 startActivity(intent);
             }
         });

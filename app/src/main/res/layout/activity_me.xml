@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.graduateassignment.Activity.MeActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:background="@color/blue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/blue"
+            app:titleTextColor="@color/white"
+            app:navigationIcon="@drawable/ic_back"
+            >
+        </android.support.v7.widget.Toolbar>
+        <!--头像 粉丝数 关注数 投稿数-->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--头像-->
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:src="@drawable/img_notlogin_64"
+                android:layout_margin="@dimen/dimen_8dp"
+                android:id="@+id/act_me_icon"
+                android:layout_width="@dimen/dimen_56dp"
+                android:layout_height="@dimen/dimen_56dp" />
+
+            <LinearLayout
+                android:layout_gravity="center_vertical"
+                android:padding="@dimen/dimen_8dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!--粉丝数-->
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content">
+
+                    <!--数量-->
+                    <TextView
+                        android:id="@+id/act_me_fansnum"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="--"/>
+                    <TextView
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="粉丝数"/>
+                </LinearLayout>
+                <!--分割线-->
+                <LinearLayout
+                    android:background="@color/blue"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent" />
+                <!--关注数-->
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content">
+
+                    <!--数量-->
+                    <TextView
+                        android:id="@+id/act_me_idolsnum"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="--"/>
+                    <TextView
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="关注数"/>
+                </LinearLayout>
+                <!--分割线-->
+                <LinearLayout
+                    android:background="@color/blue"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent" />
+                <!--投稿数-->
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content">
+
+                    <!--数量-->
+                    <TextView
+                        android:id="@+id/act_me_articlenum"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="--"/>
+                    <TextView
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="投稿数"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <!--姓名 签名-->
+        <LinearLayout
+            android:padding="@dimen/dimen_8dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/act_me_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/big"
+                android:textColor="@color/white"
+                android:text="未登录"/>
+
+            <TextView
+                android:textColor="@color/white"
+                android:id="@+id/act_me_signature"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="登录即可查看用户个人信息"/>
+        </LinearLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/act_me_tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        app:tabTextColor="@color/white"
+        app:tabMinWidth="96dp"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="@android:color/holo_green_light"
+        app:tabIndicatorColor="@android:color/holo_green_light"
+        app:tabIndicatorHeight="2dp"
+        app:tabGravity="center"
+        >
+
+    </android.support.design.widget.TabLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/act_me_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v4.view.ViewPager>
+
+</LinearLayout>

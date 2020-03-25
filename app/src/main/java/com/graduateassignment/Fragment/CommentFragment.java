@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
@@ -61,20 +62,18 @@ public class CommentFragment extends BottomSheetFragment {
     public static CommentFragment newInstance(Article article) {
         CommentFragment fragment = new CommentFragment();
         Bundle args = new Bundle();
-        args.putSerializable(ARG_PARAM1, article);
+        args.putSerializable(ARG_PARAM1, article);//获取传入的文章对象
         fragment.setArguments(args);
         return fragment;
     }
 
-    public CommentFragment() {
-        // Required empty public constructor
-    }
+    public CommentFragment() { }//构造函数
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mArticle = (Article) getArguments().getSerializable(ARG_PARAM1);
+            mArticle = (Article) getArguments().getSerializable(ARG_PARAM1);//获取传入的文章对象
         }
     }
 
@@ -84,7 +83,7 @@ public class CommentFragment extends BottomSheetFragment {
         // Inflate the layout for this fragment
         commentView = inflater.inflate(R.layout.fragment_comment, container, false);
         //初始化评论列表
-        //test();
+//        test();
         initComment(mArticle);
         return commentView;
     }
@@ -98,24 +97,24 @@ public class CommentFragment extends BottomSheetFragment {
     //插入测试数据而用
     private void test(){
         //设置所附属一级评论
-//        Comment comment1 = new Comment();
-//        comment1.setObjectId("bQlO999C");
+        Comment comment1 = new Comment();
+        comment1.setObjectId("f4e10ffb34");
         //设置所附属文章
-        //Article article = new Article();
-        //article.setObjectId("0fb6579669");
+        Article article = new Article();
+        article.setObjectId("6a157ac097");
         //设置所评论用户
-        //User user = new User();
-        //user.setObjectId("6cr5LLLb");
+        User user = new User();
+        user.setObjectId("oV7M888Q");
 
         //获取评论
         Comment comment = new Comment();
-        comment.setObjectId("HvoMUUUa");
+        comment.setObjectId("1UrL7778");
 
         //赋值
-        //comment.setCommentator(user);
-        //comment.setArticle(article);
-        //comment.setComment(comment1);
-        comment.setBeRepliedUser("华为科技");
+        comment.setCommentator(user);
+        comment.setArticle(article);
+        comment.setComment(comment1);
+        comment.setBeRepliedUser("蓝苏琪");
         comment.update(new UpdateListener() {
             @Override
             public void done(BmobException e) {
@@ -133,6 +132,7 @@ public class CommentFragment extends BottomSheetFragment {
      * @param article 传入的文章对象
      */
     private void initComment(Article article){
+        ToastUtil.show(getActivity(),"生成1级评论");
         //获取该文章的所有一级评论
         BmobQuery<Comment> commentBmobQuery = new BmobQuery<Comment>();
         commentBmobQuery.addWhereEqualTo("article",article);
@@ -181,9 +181,12 @@ public class CommentFragment extends BottomSheetFragment {
                     commentsLv2 = list;
                     //ToastUtil.show(getActivity(),"获取到数据："+list.size());
                     if(commentsLv2.size()!=0){
+                        ToastUtil.show(getActivity(),"有二级评论");
                         multiList = generateMultiItemList(commentsLv1,commentsLv2);
                         showCommentList(multiList);
-//                        showMultiList(multiList);
+                    }else{
+                        multiList = generateMultiItemList(commentsLv1,null);
+                        showCommentList(multiList);
                     }
                 }else{
                     ToastUtil.show(getActivity(),"没获取到数据："+e.getMessage());
@@ -198,11 +201,13 @@ public class CommentFragment extends BottomSheetFragment {
             //创建一级评论对象并赋值一级评论
             CommentLevelOne commentLevelOne = new CommentLevelOne(comment);
             String objectId = comment.getObjectId();
-            for (Comment comment1:commentsLv2){
-                if(comment1.getComment().getObjectId().equalsIgnoreCase(objectId)){
-                    //ToastUtil.show(getActivity(),"相同！");
-                    CommentLevelTwo commentLevelTwo = new CommentLevelTwo(comment1);
-                    commentLevelOne.addSubItem(commentLevelTwo);
+            if (commentsLv2 != null) {
+                for (Comment comment1:commentsLv2){
+                    if(comment1.getComment().getObjectId().equalsIgnoreCase(objectId)){
+                        //ToastUtil.show(getActivity(),"相同！");
+                        CommentLevelTwo commentLevelTwo = new CommentLevelTwo(comment1);
+                        commentLevelOne.addSubItem(commentLevelTwo);
+                    }
                 }
             }
             res.add(commentLevelOne);
@@ -242,7 +247,6 @@ public class CommentFragment extends BottomSheetFragment {
                         commentLevelOne = (CommentLevelOne) adapter.getItem(position);
                         comment = commentLevelOne.getComment();
                         showReplyToComment(comment);
-                        //replyToComment(view);
                         break;
                     case R.id.item_comment_level2_icon:
                         ToastUtil.show(getActivity(),"二级评论用户头像");
@@ -265,6 +269,10 @@ public class CommentFragment extends BottomSheetFragment {
      * @param comment 传入用户要回复的指定评论
      */
     private void showReplyToComment(final Comment comment){
+        if(BmobUser.getCurrentUser()==null){
+            ToastUtil.show(getActivity(),"用户未登录，不能进行评论~");
+            return;
+        }
         //构建一个弹窗
         final QuickPopup quickPopup = QuickPopupBuilder.with(getContext())
                 .contentView(R.layout.window_comment_replytocomment)
@@ -286,13 +294,10 @@ public class CommentFragment extends BottomSheetFragment {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //此处日后改为获取当前用户
-                User user = new User();
-                user.setObjectId("jJGL888D");
                 //获取评论回复框的内容
                 String content = editText.getText().toString();
                 //提交评论内容
-                submitMyComment(comment,user,content);
+                submitMyComment(comment, BmobUser.getCurrentUser(User.class),content);
                 quickPopup.dismiss();
             }
         });
@@ -310,7 +315,7 @@ public class CommentFragment extends BottomSheetFragment {
     private void submitMyComment(final Comment beRepiledComment, final User user, final String content){
         //生成二级评论
         Comment comment = new Comment();
-        comment.setArticle(beRepiledComment.getArticle());
+        comment.setArticle(mArticle);
         comment.setCommentator(user);
         comment.setCommentLevel("2");
         if(beRepiledComment.getCommentLevel().equalsIgnoreCase("2")) {

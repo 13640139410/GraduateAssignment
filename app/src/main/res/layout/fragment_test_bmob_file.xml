@@ -85,6 +85,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <!-- TODO: Update blank fragment layout -->
+            <Button
+                android:id="@+id/frag_test_bmob_file_jsoup"
+                android:text="jsoup测试"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
             <ImageView
                 android:id="@+id/frag_test_bmob_file_img"
                 android:layout_width="match_parent"

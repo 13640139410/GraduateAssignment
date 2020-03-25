@@ -1,0 +1,19 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- TODO: Update blank fragment layout -->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/frag_myfans_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:visibility="gone"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="暂时还没有粉丝关注你呢~~"
+        android:id="@+id/frag_myfans_emptytext"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</FrameLayout>

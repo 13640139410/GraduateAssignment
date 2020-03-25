@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 
 import com.graduateassignment.DB.ArticleCategory;
+import com.graduateassignment.DB.User;
 import com.graduateassignment.Fragment.IndexFragment;
 import com.graduateassignment.Fragment.TestBmobFileFragment;
 import com.graduateassignment.Fragment.TestRichEditorFragment;
@@ -19,6 +20,7 @@ import java.util.List;
 import java.util.Set;
 
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import me.majiajie.pagerbottomtabstrip.NavigationController;
@@ -52,7 +54,9 @@ public class MainActivity extends BaseActivity {
                         getFragment(new TestBmobFileFragment());
                         break;
                     case 2:
-                        getFragment(new TestRichEditorFragment());
+                        Intent intent = new Intent(MainActivity.this, MeActivity.class);
+                        intent.putExtra("USER", BmobUser.getCurrentUser(User.class));
+                        startActivity(intent);
                         break;
                 }
             }
@@ -71,6 +75,7 @@ public class MainActivity extends BaseActivity {
 //                }
             }
         });
+        getFragment(new IndexFragment());
     }
 
     private void ArticlePreferenceInit(){

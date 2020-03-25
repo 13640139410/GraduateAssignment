@@ -433,7 +433,7 @@ public class TestRicheditorActivity extends BaseActivity {
 
     private void getUserTest(){
         BmobQuery<User> userBmobQuery = new BmobQuery<>();
-        userBmobQuery.getObject("6cr5LLLb", new QueryListener<User>() {
+        userBmobQuery.getObject("oV7M888Q", new QueryListener<User>() {
             @Override
             public void done(User user, BmobException e) {
                 if(e==null){

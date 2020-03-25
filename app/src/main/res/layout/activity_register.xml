@@ -1,33 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:background="@color/colorPrimary"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.RegisterActivity">
+    android:background="@color/colorPrimary"
+    android:fitsSystemWindows="true">
 
-    <RelativeLayout
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:fitsSystemWindows="true">
 
-        <ImageView
-            android:id="@+id/act_reg_back"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/dimen_16dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/title_back"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_back"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center_vertical"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/back_48"/>
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/title_txt"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
 
         <TextView
-            android:layout_centerInParent="true"
-            android:text="@string/act_reg_title"
-            android:textColor="@color/txtColorWhite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
+            android:id="@+id/title_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:paddingRight="10dp"
+            android:gravity="end|center_vertical"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:textSize="15sp"/>
+    </LinearLayout>
 
     <ImageView
         android:src="@drawable/icon_register"
@@ -59,64 +89,65 @@
 
                 <!--账户名称-->
                 <EditText
-                    android:id="@+id/act_reg_account"
+                    android:id="@+id/account_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:hint="@string/act_reg_account" />
+                    android:hint="账户名称" />
 
                 <!--账户密码-->
                 <EditText
-                    android:id="@+id/act_reg_pwd"
+                    android:id="@+id/account_pwd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:hint="@string/act_reg_pwd"
+                    android:hint="账户密码"
                     android:inputType="textPassword" />
 
                 <!--账户确认密码-->
                 <EditText
-                    android:id="@+id/act_reg_surepwd"
+                    android:id="@+id/account_pwdsure"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:hint="@string/act_reg_surepwd"
+                    android:hint="账户确认密码"
                     android:inputType="textPassword" />
 
                 <!--账户手机号码-->
                 <EditText
-                    android:id="@+id/act_reg_phone"
+                    android:id="@+id/account_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:hint="@string/act_reg_phone" />
+                    android:hint="账户手机" />
 
                 <!--账户邮箱-->
                 <EditText
-                    android:id="@+id/act_reg_email"
+                    android:id="@+id/account_mail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:hint="@string/act_reg_email"
+                    android:hint="账户邮箱"
                     android:inputType="textEmailAddress" />
 
                 <!--用户签名-->
                 <EditText
-                    android:id="@+id/act_reg_signature"
+                    android:id="@+id/account_signature"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:hint="@string/act_reg_signature" />
+                    android:hint="用户签名" />
 
-                <!--注册按钮-->
                 <Button
                     android:background="@color/colorPrimary"
-                    android:textColor="@color/txtColorWhite"
-                    android:id="@+id/act_reg_reg"
+                    android:textColor="@color/black"
+                    android:id="@+id/account_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/act_reg_reg" />
+                    android:text="注册" />
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>
     </android.support.v7.widget.CardView>
+
+
 </LinearLayout>
