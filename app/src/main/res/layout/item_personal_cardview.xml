@@ -48,7 +48,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/small"
+                    android:textSize="@dimen/txtsize_small"
                     android:text="已关注"/>
             </LinearLayout>
         </LinearLayout>

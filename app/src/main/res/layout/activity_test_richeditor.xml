@@ -42,7 +42,7 @@
         android:id="@+id/act_test_richeditor_title"
         android:layout_margin="@dimen/dimen_8dp"
         android:text="请输入标题"
-        android:textSize="@dimen/big"
+        android:textSize="@dimen/txtsize_big"
         android:background="@null"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

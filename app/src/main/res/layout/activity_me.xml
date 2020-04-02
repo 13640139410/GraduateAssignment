@@ -124,7 +124,7 @@
                 android:id="@+id/act_me_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/big"
+                android:textSize="@dimen/txtsize_big"
                 android:textColor="@color/white"
                 android:text="未登录"/>
 

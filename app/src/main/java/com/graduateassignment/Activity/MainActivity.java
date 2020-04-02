@@ -48,6 +48,7 @@ public class MainActivity extends BaseActivity {
         navigationController.addTabItemSelectedListener(new OnTabItemSelectedListener() {
             @Override
             public void onSelected(int index, int old) {
+                Intent intent;
                 switch (index){
                     case 0:
                         getFragment(new IndexFragment());
@@ -56,12 +57,14 @@ public class MainActivity extends BaseActivity {
                         getFragment(new TestBmobFileFragment());
                         break;
                     case 2:
-                        Intent intent = new Intent(MainActivity.this, MeActivity.class);
+                        intent = new Intent(MainActivity.this, MeActivity.class);
                         intent.putExtra("USER", BmobUser.getCurrentUser(User.class));
                         startActivity(intent);
                         break;
                     case 3:
-
+                        intent = new Intent(MainActivity.this, RepairFromCustomerActivity.class);
+                        intent.putExtra("USER", BmobUser.getCurrentUser(User.class));
+                        startActivity(intent);
                         break;
                 }
             }

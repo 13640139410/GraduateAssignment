@@ -89,7 +89,8 @@
 
         <service android:name="com.amap.api.location.APSService" />
 
-        <activity android:name=".Test.CustomLocationActivity"></activity>
+        <activity android:name=".Test.CustomLocationActivity" />
+        <activity android:name=".Activity.RepairFromCustomerActivity"></activity>
     </application>
 
 </manifest>

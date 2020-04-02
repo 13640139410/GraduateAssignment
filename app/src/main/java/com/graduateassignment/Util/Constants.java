@@ -34,4 +34,38 @@ public class Constants {
     public static final LatLng CHENGDU = new LatLng(30.679879, 104.064855);// 成都市经纬度
     public static final LatLng XIAN = new LatLng(34.341568, 108.940174);// 西安市经纬度
     public static final LatLng ZHENGZHOU = new LatLng(34.7466, 113.625367);// 郑州市经纬度
+
+    public static final String BRAND_360 = "360";
+    public static final String BRAND_IPHONE = "iPhone";
+    public static final String BRAND_IPAD = "iPad";
+    public static final String BRAND_IPOD = "iPod";
+    public static final String BRAND_HONOR = "荣耀";
+    public static final String BRAND_HUAWEI = "华为";
+    public static final String BRAND_HUAWEI1 = "HUAWEI";
+    public static final String BRAND_HUAWEIMM = "华为麦芒";
+    public static final String BRAND_HUAWEICX = "华为畅享";
+    public static final String BRAND_HUAWEILY = "华为揽阅";
+    public static final String BRAND_HUAWEIPB = "华为平板";
+    public static final String BRAND_HUAWEICXPB = "华为畅享平板";
+    public static final String BRAND_LENOVO = "联想";
+    public static final String BRAND_LUX = "乐视";
+    public static final String BRAND_MEIZU = "魅族";
+    public static final String BRAND_MEILAN = "魅蓝";
+    public static final String BRAND_MI = "小米";
+    public static final String BRAND_MOTO = "摩托罗拉";
+    public static final String BRAND_NOKIA = "Nokia";
+    public static final String BRAND_NUBIA = "nubia";
+    public static final String BRAND_HONGMO = "红魔";
+    public static final String BRAND_ONEPLUS = "OnePlus";
+    public static final String BRAND_OPPO = "OPPO";
+    public static final String BRAND_GALAXY = "Galaxy";
+    public static final String BRAND_HAMMER = "锤子";
+    public static final String BRAND_NUT = "坚果";
+    public static final String BRAND_VIVO = "vivo";
+    public static final String BRAND_IQOO = "iQOO";
+    public static final String BRAND_MIFLAT = "小米平板";
+    public static final String BRAND_REDMI = "红米";
+    public static final String BRAND_BLACKSHARP = "黑鲨";
+    public static final String BRAND_POCO = "POCO";
+
 }
