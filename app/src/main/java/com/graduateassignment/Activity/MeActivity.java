@@ -151,7 +151,7 @@ public class MeActivity extends AppCompatActivity {
         fragments.add(MeArticlesFragment.newInstance(beViewedPerson));
         if(status==WATCH_ME||status==NOT_LOGIN){
             fragments.add(MeOrderFragment.newInstance());
-            fragments.add(MeMsgFragment.newInstance());
+            fragments.add(MeMsgFragment.newInstance(beViewedPerson));
         }
 
         MyFragmentAdapter adapter = new MyFragmentAdapter(getSupportFragmentManager(),fragments, Arrays.asList(sTitle));

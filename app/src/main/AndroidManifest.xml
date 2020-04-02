@@ -27,6 +27,10 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <!-- 用于申请调用A-GPS模块 -->
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <!-- 声明后台定位权限 -->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
     <application
         android:allowBackup="true"
@@ -68,9 +72,6 @@
         <activity android:name=".Activity.TestGdmapActivity" />
         <activity android:name=".Activity.TestGdmapEventsActivity" />
         <activity android:name=".Activity.TestGdmapUisettingsActivity" />
-
-        <service android:name="com.amap.api.location.APSService" />
-
         <activity android:name=".Activity.TestGdmapCameraActivity" />
         <activity android:name=".Activity.TestGdmapLocationActivity" />
         <activity android:name=".Activity.TestGdmapDistrictActivity" />
@@ -82,7 +83,13 @@
         <activity android:name=".Activity.TestGdmapCustommarkerActivity" />
         <activity android:name=".Activity.ArticleActivity" />
         <activity android:name=".Activity.TestJsoupDataActivity" />
-        <activity android:name=".Activity.MeActivity"></activity>
+        <activity android:name=".Activity.MeActivity" />
+        <activity android:name=".Activity.ChooseIconActivity" />
+        <activity android:name=".Test.GetmobiledataActivity" />
+
+        <service android:name="com.amap.api.location.APSService" />
+
+        <activity android:name=".Test.CustomLocationActivity"></activity>
     </application>
 
 </manifest>

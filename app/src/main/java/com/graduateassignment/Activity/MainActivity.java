@@ -5,6 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import com.graduateassignment.DB.ArticleCategory;
 import com.graduateassignment.DB.User;
@@ -29,7 +31,6 @@ import me.majiajie.pagerbottomtabstrip.listener.OnTabItemSelectedListener;
 
 public class MainActivity extends BaseActivity {
 
-//    private NavigationController navigationController;
     private NavigationController navigationController;
 
     @Override
@@ -40,8 +41,9 @@ public class MainActivity extends BaseActivity {
         PageNavigationView tab = (PageNavigationView) findViewById(R.id.tab);
         navigationController = tab.material()
                 .addItem(R.drawable.ic_menu_mapmode, "首页",getResources().getColor(R.color.colorPrimaryDark))
-                .addItem(android.R.drawable.ic_menu_add, "维修",getResources().getColor(R.color.colorPrimaryDark))
+                .addItem(android.R.drawable.ic_menu_add, "发布",getResources().getColor(R.color.colorPrimaryDark))
                 .addItem(R.drawable.ic_menu_manage, "我的",getResources().getColor(R.color.colorPrimaryDark))
+                .addItem(R.drawable.ic_menu_mapmode,"维修",getResources().getColor(R.color.colorPrimaryDark))
                 .build();
         navigationController.addTabItemSelectedListener(new OnTabItemSelectedListener() {
             @Override
@@ -57,6 +59,9 @@ public class MainActivity extends BaseActivity {
                         Intent intent = new Intent(MainActivity.this, MeActivity.class);
                         intent.putExtra("USER", BmobUser.getCurrentUser(User.class));
                         startActivity(intent);
+                        break;
+                    case 3:
+
                         break;
                 }
             }

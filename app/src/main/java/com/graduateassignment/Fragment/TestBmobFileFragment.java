@@ -33,6 +33,8 @@ import com.graduateassignment.Activity.TestJsoupDataActivity;
 import com.graduateassignment.Activity.TestRicheditorActivity;
 import com.graduateassignment.Activity.TestGdmapSubpoisearchActivity;
 import com.graduateassignment.R;
+import com.graduateassignment.Test.CustomLocationActivity;
+import com.graduateassignment.Test.GetmobiledataActivity;
 import com.graduateassignment.Util.FileUtil;
 
 import java.io.File;
@@ -184,6 +186,20 @@ public class TestBmobFileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), TestJsoupDataActivity.class);
+                startActivity(intent);
+            }
+        });
+        mainActivity.findViewById(R.id.frag_test_bmob_file_getmobiledata).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), GetmobiledataActivity.class);
+                startActivity(intent);
+            }
+        });
+        mainActivity.findViewById(R.id.frag_test_bmob_file_testlocation).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), CustomLocationActivity.class);
                 startActivity(intent);
             }
         });

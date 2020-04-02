@@ -55,6 +55,7 @@ import java.util.List;
 import java.util.Set;
 
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobDate;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.datatype.BmobPointer;
@@ -671,7 +672,7 @@ public class TestRicheditorActivity extends BaseActivity {
                     "还未添加标签");
             return;
         }
-        article.setAuthor(this.testUser);
+        article.setAuthor(BmobUser.getCurrentUser(User.class)==null?this.testUser:BmobUser.getCurrentUser(User.class));
         article.setDate(new BmobDate(new Date()));
         article.setContent(content);
         article.save(new SaveListener<String>() {

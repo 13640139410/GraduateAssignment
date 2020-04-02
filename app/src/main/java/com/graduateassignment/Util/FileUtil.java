@@ -1,8 +1,20 @@
 package com.graduateassignment.Util;
 
+import android.app.Activity;
+import android.content.ContentUris;
 import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Environment;
+import android.provider.DocumentsContract;
+import android.provider.MediaStore;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -25,6 +37,8 @@ import cn.bmob.v3.listener.UploadFileListener;
  */
 
 public class FileUtil {
+
+    public static final int CHOOSE_PHOTO = 2;
 
     /**
      * 将内容写入sd卡中
@@ -229,36 +243,88 @@ public class FileUtil {
             String imgPath = imgs.get(i).attr("src");
             imgPaths.add(imgPath);
         }
-//        Element article = document.getElementById("content");
-//        String articleStr = article.toString();
-//        String title = document.title();
-//        String date = document.getElementById("datetime_forapp").attr("value");
-//        //将字符串转为HTML格式
-//        String str = FileUtil.convertToHtmlFormat(title, articleStr);
-//        String strTest = null;
-//        //将该字符串存入内存中
-//        try {
-//            FileUtil.writeInternal(this, title+".html", str);
-//            strTest = "证明是否成功：\n" + FileUtil.readInternal(this, title+".html");
-//            String filePath = FileUtil.getFilePathFromWriteInternal(this, title+".html");
-//            File file = new File(filePath);
-//            final BmobFile bmobFile = new BmobFile(file);
-//            bmobFile.upload(new UploadFileListener() {
-//                @Override
-//                public void done(BmobException e) {
-//                    if(e==null) {
-//                        //将文件与数据库关联
-//                        //saveFile(bmobFile);
-//                        Log.d("done", "上传成功");
-//                    } else {
-//                        Log.d("failed", "上传失败");
-//                    }
-//                }
-//            });
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        //showResponse(strTest);
         return imgPaths;
+    }
+
+    /**
+     * 4.4及以上的版本处理图片
+     * @param context
+     * @param data
+     * @return
+     */
+    public static String handleImageOnKitKat(Context context,Intent data) {
+        String imagePath = null;
+        Uri uri = data.getData();
+        if (DocumentsContract.isDocumentUri(context, uri)) {
+            // 如果是document类型的Uri， 则通过document id处理
+            String docId = DocumentsContract.getDocumentId(uri);
+            if("com.android.providers.media.documents".equals(uri.getAuthority())) {
+                String id = docId.split(":")[1]; // 解析出数字格式的id
+                String selection = MediaStore.Images.Media._ID + "=" + id;
+                imagePath = getImagePath(context,MediaStore.Images.Media.EXTERNAL_CONTENT_URI, selection);
+            } else if ("com.android.providers.downloads.documents".equals(uri.
+                    getAuthority())) {
+                Uri contentUri = ContentUris.withAppendedId(Uri.parse("content://downloads/public_downloads"), Long.valueOf(docId));
+                imagePath = getImagePath(context,contentUri, null);
+            }
+        } else if ("content".equalsIgnoreCase(uri.getScheme())) {
+            // 如果是content类型的Uri， 则使用普通方式处理
+            imagePath = getImagePath(context,uri, null);
+        } else if ("file".equalsIgnoreCase(uri.getScheme())) {
+            // 如果是file类型的Uri， 直接获取图片路径即可
+            imagePath = uri.getPath();
+        }
+        return imagePath;//返回图片路径
+    }
+
+    /**
+     * 4.4版本以下的系统处理图片
+     * @param context
+     * @param data
+     * @return
+     */
+    public static String handleImageBeforeKitKat(Context context,Intent data) {
+        Uri uri = data.getData();
+        String imagePath = getImagePath(context,uri, null);
+        return imagePath;
+    }
+
+    public static String getImagePath(Context context,Uri uri, String selection) {
+        String path = null;
+        // 通过Uri和selection来获取真实的图片路径
+        Cursor cursor = context.getContentResolver().query(uri, null, selection, null, null);
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
+            }
+            cursor.close();
+        }
+        return path;
+    }
+
+    /**
+     * 根据传入活动打开相册
+     * @param activity
+     */
+    public static void openAlbum(Activity activity) {
+        Intent intent = new Intent("android.intent.action.GET_CONTENT");
+        intent.setType("image/*");
+        Log.d("TestRichEditor","openAlbum()");
+        activity.startActivityForResult(intent, CHOOSE_PHOTO); // 打开相册
+    }
+
+    /**
+     * 根据文件路径在图片控件中展示图片
+     * @param context
+     * @param imageView
+     * @param imagePath
+     */
+    public static void displayImage(Context context, ImageView imageView, String imagePath){
+        if (imagePath != null) {
+            Bitmap bitmap = BitmapFactory.decodeFile(imagePath);
+            imageView.setImageBitmap(bitmap);
+        } else {
+            Toast.makeText(context, "failed to get image", Toast.LENGTH_SHORT).show();
+        }
     }
 }

@@ -90,6 +90,18 @@
                 android:text="jsoup测试"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/frag_test_bmob_file_getmobiledata"
+                android:text="获取手机型号数据"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/frag_test_bmob_file_testlocation"
+                android:text="测试地图定位"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
             <ImageView
                 android:id="@+id/frag_test_bmob_file_img"
                 android:layout_width="match_parent"
