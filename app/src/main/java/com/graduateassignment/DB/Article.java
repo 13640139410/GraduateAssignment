@@ -17,6 +17,7 @@ public class Article extends BmobObject {
     private Content content;//文章内容
     private String url;//数据源URL
     private BmobRelation articleCategorys;//文章类别
+    private List<String> articleCates;//文章类别字段集合
     private BmobDate date;//发布文章的日期
     private Integer readNum;//阅读量
     private List<User> likeUsers;//喜欢的读者
@@ -61,6 +62,14 @@ public class Article extends BmobObject {
 
     public void setArticleCategorys(BmobRelation articleCategorys) {
         this.articleCategorys = articleCategorys;
+    }
+
+    public List<String> getArticleCates() {
+        return articleCates;
+    }
+
+    public void setArticleCates(List<String> articleCates) {
+        this.articleCates = articleCates;
     }
 
     public BmobDate getDate() {

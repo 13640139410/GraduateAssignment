@@ -163,7 +163,7 @@
     <string name="cloud_description">介绍云图搜索功能</string>
     <string name="province">省</string>
     <string name="city">市</string>
-    <string name="district">区/县</string>
+    <string name="district">区县</string>
     <string name="location_share">位置分享</string>
     <string name="route_share">路径规划分享</string>
     <string name="poi_share">POI分享</string>

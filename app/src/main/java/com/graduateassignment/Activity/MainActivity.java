@@ -5,15 +5,16 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
 
 import com.graduateassignment.DB.ArticleCategory;
+import com.graduateassignment.DB.MaintenancePoint;
+import com.graduateassignment.DB.Subscribe;
 import com.graduateassignment.DB.User;
 import com.graduateassignment.Fragment.IndexFragment;
 import com.graduateassignment.Fragment.TestBmobFileFragment;
-import com.graduateassignment.Fragment.TestRichEditorFragment;
 import com.graduateassignment.R;
+import com.graduateassignment.Repair.RepairFromCustomerActivity;
+import com.graduateassignment.Repair.RepairFromServerActivity;
 import com.graduateassignment.Util.SharedPreferencesUtil;
 import com.graduateassignment.Util.ToastUtil;
 
@@ -25,6 +26,8 @@ import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.UpdateListener;
 import me.majiajie.pagerbottomtabstrip.NavigationController;
 import me.majiajie.pagerbottomtabstrip.PageNavigationView;
 import me.majiajie.pagerbottomtabstrip.listener.OnTabItemSelectedListener;
@@ -62,9 +65,7 @@ public class MainActivity extends BaseActivity {
                         startActivity(intent);
                         break;
                     case 3:
-                        intent = new Intent(MainActivity.this, RepairFromCustomerActivity.class);
-                        intent.putExtra("USER", BmobUser.getCurrentUser(User.class));
-                        startActivity(intent);
+                        RepairAct();
                         break;
                 }
             }
@@ -110,5 +111,57 @@ public class MainActivity extends BaseActivity {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.fragment_main, fragment);
         transaction.commit();
+    }
+
+    private void RepairAct(){
+        User user = BmobUser.getCurrentUser(User.class);
+        if(user.getIdentity().equalsIgnoreCase("0")){//如果是普通用户
+            Intent intent = new Intent(MainActivity.this, RepairFromCustomerActivity.class);
+            intent.putExtra("USER", BmobUser.getCurrentUser(User.class));
+            startActivity(intent);
+        }else if(user.getIdentity().equalsIgnoreCase("1")){//如果是维修店家用户
+            Intent intent = new Intent(MainActivity.this, RepairFromServerActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    private void test(){
+        User user = BmobUser.getCurrentUser(User.class);
+//        user.setIdentity("0");
+//        user.update(new UpdateListener() {
+//            @Override
+//            public void done(BmobException e) {
+//                if(e==null){
+//                    ToastUtil.show(MainActivity.this,"更新成功");
+//                }else{
+//                    ToastUtil.show(MainActivity.this,"更新失败");
+//                }
+//            }
+//        });
+//        Subscribe subscribe = new Subscribe();
+//        subscribe.setUser(user);
+//        subscribe.save(new SaveListener<String>() {
+//            @Override
+//            public void done(String s, BmobException e) {
+//                if(e==null){
+//                    ToastUtil.show(MainActivity.this,"更新成功");
+//                }else{
+//                    ToastUtil.show(MainActivity.this,"更新失败");
+//                }
+//            }
+//        });
+        MaintenancePoint maintenancePoint = new MaintenancePoint();
+        maintenancePoint.setObjectId("yuUCiiix");
+        maintenancePoint.setOwner(user);
+        maintenancePoint.update(new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                if(e==null){
+                    ToastUtil.show(MainActivity.this,"更新成功");
+                }else{
+                    ToastUtil.show(MainActivity.this,"更新失败");
+                }
+            }
+        });
     }
 }

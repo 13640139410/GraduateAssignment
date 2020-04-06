@@ -10,7 +10,9 @@ import cn.bmob.v3.datatype.BmobGeoPoint;
 public class MaintenancePoint extends BmobObject {
     private BmobGeoPoint coordinate;
     private String name;
-    private String region;
+    private String province;
+    private String city;
+    private String district;
     private User owner;
     private String phone;
 
@@ -26,11 +28,23 @@ public class MaintenancePoint extends BmobObject {
     public void setName(String name) {
         this.name = name;
     }
-    public String getRegion() {
-        return region;
+    public String getProvince() {
+        return province;
     }
-    public void setRegion(String region) {
-        this.region = region;
+    public void setProvince(String province) {
+        this.province = province;
+    }
+    public String getCity() {
+        return city;
+    }
+    public void setCity(String city) {
+        this.city = city;
+    }
+    public String getDistrict() {
+        return district;
+    }
+    public void setDistrict(String district) {
+        this.district = district;
     }
     public User getOwner() {
         return owner;

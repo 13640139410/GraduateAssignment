@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.graduateassignment.Search.SearchActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:background="@color/white"
+        android:padding="@dimen/dimen_8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="1dp">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+            <EditText
+                android:imeOptions="actionSend"
+                android:id="@+id/act_search_edittext"
+                android:layout_gravity="center_vertical"
+                android:drawableLeft="@drawable/search_input"
+                android:background="@drawable/shape_round_gray"
+                android:layout_width="0dp"
+                android:layout_weight="5"
+                android:hint="搜索你想看的讯息"
+                android:layout_height="@dimen/dimen_32dp" />
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:text="取消"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/txtsize_normal"
+                    android:layout_gravity="center"
+                    android:id="@+id/act_search_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </FrameLayout>
+        </LinearLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:paddingTop="@dimen/dimen_8dp"
+        android:paddingRight="@dimen/dimen_8dp"
+        android:id="@+id/act_search_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

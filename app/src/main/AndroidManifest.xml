@@ -63,7 +63,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.MainActivity" />
+        <activity
+            android:name=".Activity.MainActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".Activity.WelcomeGuideActivity" />
         <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.ForgetActivity" />
@@ -90,7 +92,11 @@
         <service android:name="com.amap.api.location.APSService" />
 
         <activity android:name=".Test.CustomLocationActivity" />
-        <activity android:name=".Activity.RepairFromCustomerActivity"></activity>
+        <activity android:name=".Repair.RepairFromCustomerActivity" />
+        <activity android:name=".Repair.FillInOrderActivity" />
+        <activity android:name=".Repair.RepairFromServerActivity" />
+        <activity android:name=".Search.SearchActivity" />
+        <activity android:name=".Notification.NotificationActivity"></activity>
     </application>
 
 </manifest>

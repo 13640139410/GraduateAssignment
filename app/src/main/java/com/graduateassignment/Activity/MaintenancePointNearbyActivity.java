@@ -52,6 +52,8 @@ public class MaintenancePointNearbyActivity extends BaseActivity  implements Loc
     private AMapLocationClient mlocationClient;
     private AMapLocationClientOption mLocationOption;
     private FloatingActionButton fab;//用于弹出附近维修点列表
+    private String mProvince;//我的定位所处的省
+    private String mCity;//我的定位所处的市
     private String mDistrict;//我的定位所处的区
     private BmobGeoPoint mBmobGeoPoint = null;//获取第一次定位的值
     private List<MaintenancePoint> maintenancePoints = new ArrayList<>();//我的定位所处区域的所有维修店
@@ -102,7 +104,7 @@ public class MaintenancePointNearbyActivity extends BaseActivity  implements Loc
         TextView nameUi = (TextView) contentView.findViewById(R.id.part_maintenancenearby_infowin_name);
         TextView addressUi =  (TextView) contentView.findViewById(R.id.part_maintenancenearby_infowin_address);
         nameUi.setText(maintenancePoint.getName());
-        addressUi.setText("地址："+maintenancePoint.getRegion());
+        addressUi.setText("地址："+maintenancePoint.getDistrict());
         phoneUi.setText("电话："+maintenancePoint.getPhone());
         //创建并显示popWindow
         markerPopWindow= new CustomPopWindow.PopupWindowBuilder(this)
@@ -119,7 +121,7 @@ public class MaintenancePointNearbyActivity extends BaseActivity  implements Loc
     private void getMaintenancePointNearby(){
         ToastUtil.show(MaintenancePointNearbyActivity.this,"方法getMaintenancePointNearby");
         BmobQuery<MaintenancePoint> bmobQuery = new BmobQuery<MaintenancePoint>();
-        bmobQuery.addWhereEqualTo("region",mDistrict);
+        bmobQuery.addWhereEqualTo("district",mDistrict);
         bmobQuery.findObjects(new FindListener<MaintenancePoint>() {
             @Override
             public void done(List<MaintenancePoint> list, BmobException e) {
@@ -129,9 +131,6 @@ public class MaintenancePointNearbyActivity extends BaseActivity  implements Loc
                     LatLngBounds latLngBounds = visibleRegion.latLngBounds;// 获取可视区域的Bounds
                     //添加标记点
                     for(MaintenancePoint maintenancePoint:list){
-//                        double latitude = maintenancePoint.getCoordinate().getLatitude();
-//                        double longtitude = maintenancePoint.getCoordinate().getLongitude();
-//                        LatLng latLng = new LatLng(latitude,longtitude);
                         LatLng latLng = LocationUtil.convertToLatLng(maintenancePoint.getCoordinate());
                         //判断该维修点是否在可视区域中
                         boolean isContain = latLngBounds.contains(latLng);
@@ -231,6 +230,8 @@ public class MaintenancePointNearbyActivity extends BaseActivity  implements Loc
         if (mListener != null && amapLocation != null) {
             if (amapLocation != null
                     && amapLocation.getErrorCode() == 0) {
+                mProvince = amapLocation.getProvince();//获取我的定位所处的省
+                mCity = amapLocation.getCity();//获取我的定位所处的市
                 mDistrict = amapLocation.getDistrict();//获取我的定位所处的区
                 mListener.onLocationChanged(amapLocation);// 显示系统小蓝点
                 if(mBmobGeoPoint == null){

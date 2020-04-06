@@ -434,7 +434,7 @@ public class TestRicheditorActivity extends BaseActivity {
 
     private void getUserTest(){
         BmobQuery<User> userBmobQuery = new BmobQuery<>();
-        userBmobQuery.getObject("oV7M888Q", new QueryListener<User>() {
+        userBmobQuery.getObject("KiLe999X", new QueryListener<User>() {
             @Override
             public void done(User user, BmobException e) {
                 if(e==null){
@@ -658,6 +658,7 @@ public class TestRicheditorActivity extends BaseActivity {
         article.setThumbnail_pic_s(thumbNailUrl);
         article.setIsReptile("0");
         article.setTitle(this.title);
+        article.setArticleCates(SelectedList);
         BmobRelation articleCategorys = new BmobRelation();
         List<BmobPointer> bmobPointers = new ArrayList<>();
         if (SelectedEntityList.size() != 0){

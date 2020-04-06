@@ -67,5 +67,17 @@ public class Constants {
     public static final String BRAND_REDMI = "红米";
     public static final String BRAND_BLACKSHARP = "黑鲨";
     public static final String BRAND_POCO = "POCO";
+    //维修问题列表
+    public static final String PROBLEM_SCREEN = "屏幕问题";
+    public static final String PROBLEM_BATTERY = "电池/充电";
+    public static final String PROBLEM_BACKCOVER = "后壳问题";
+    public static final String PROBLEM_CAMERA = "摄像头问题";
+    public static final String PROBLEM_VOICE = "声音问题";
+    public static final String PROBLEM_BUTTON = "按键问题";
+    public static final String PROBLEM_STORAGE = "内存拓容";
+    public static final String PROBLEM_SIGN = "信号问题";
+    public static final String PROBLEM_REACT = "感应问题";
+    public static final String PROBLEM_MAINBOARD= "主板问题";
+
 
 }

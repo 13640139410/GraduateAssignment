@@ -21,6 +21,7 @@ import com.graduateassignment.Fragment.MeMsgFragment;
 import com.graduateassignment.Fragment.MeOrderFragment;
 import com.graduateassignment.R;
 import com.graduateassignment.Util.ToastUtil;
+import com.graduateassignment.personalMsg.OrderFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -150,7 +151,7 @@ public class MeActivity extends AppCompatActivity {
         fragments.add(MeFansFragment.newInstance(beViewedPerson));
         fragments.add(MeArticlesFragment.newInstance(beViewedPerson));
         if(status==WATCH_ME||status==NOT_LOGIN){
-            fragments.add(MeOrderFragment.newInstance());
+            fragments.add(OrderFragment.newInstance());
             fragments.add(MeMsgFragment.newInstance(beViewedPerson));
         }
 
@@ -172,6 +173,5 @@ public class MeActivity extends AppCompatActivity {
 
             }
         });
-
     }
 }

@@ -6,10 +6,13 @@ import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.graduateassignment.DB.Article;
+import com.graduateassignment.DB.ArticleCategory;
 import com.graduateassignment.DB.Brand;
 import com.graduateassignment.R;
 
 import java.util.List;
+
+import cn.bmob.v3.datatype.BmobPointer;
 
 /**
  * Created by admin on 2020/3/15.
@@ -17,8 +20,11 @@ import java.util.List;
 
 public class ArticleAdapter extends BaseQuickAdapter<Article,BaseViewHolder> {
 
-    public ArticleAdapter(int layoutResId, List<Article> data) {
+    private List<ArticleCategory> articleCategories;
+
+    public ArticleAdapter(int layoutResId, List<Article> data,List<ArticleCategory> articleCategories) {
         super(layoutResId, data);
+        this.articleCategories = articleCategories;
     }
 
     @Override
@@ -28,7 +34,8 @@ public class ArticleAdapter extends BaseQuickAdapter<Article,BaseViewHolder> {
         //设置标题
         helper.setText(R.id.item_article_title,item.getTitle());
         //设置作者
-        helper.setText(R.id.item_article_author,item.getAuthor().getUsername());
+        //ArticleCategory articleCategory = (ArticleCategory)item.getArticleCategorys().getObjects().get(0)
+        helper.setText(R.id.item_article_author,item.getArticleCates().get(0) + " · " + item.getAuthor().getUsername());
         //设置时间
         helper.setText(R.id.item_article_time,item.getUpdatedAt());
     }

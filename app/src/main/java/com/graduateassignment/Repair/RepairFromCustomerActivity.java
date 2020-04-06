@@ -1,33 +1,27 @@
-package com.graduateassignment.Activity;
+package com.graduateassignment.Repair;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.graduateassignment.Adapter.PhoneBrandAdapter;
 import com.graduateassignment.Adapter.PhoneNameAdapter;
 import com.graduateassignment.DB.PhoneModel;
 import com.graduateassignment.DB.User;
-import com.graduateassignment.Fragment.PhoneNameFragment;
+import com.graduateassignment.Repair.PhoneNameFragment;
 import com.graduateassignment.R;
 import com.graduateassignment.Util.Constants;
-import com.graduateassignment.Util.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
 
 /**
  * 顾客通过填写维修订单申请维修服务
@@ -56,7 +50,7 @@ public class RepairFromCustomerActivity extends AppCompatActivity implements Vie
     private void initView1(){
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.act_repairfromcustomer_recyclerview);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));//添加列表的分割线
+        //recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));//添加列表的分割线
         recyclerView.setLayoutManager(linearLayoutManager);
         PhoneBrandAdapter phoneBrandAdapter = new PhoneBrandAdapter(R.layout.item_mobilebrand,brands);
         recyclerView.setAdapter(phoneBrandAdapter);

@@ -17,9 +17,11 @@ import com.graduateassignment.Activity.ArticleActivity;
 import com.graduateassignment.Adapter.ArticleAdapter;
 import com.graduateassignment.Adapter.PersonalAdapter;
 import com.graduateassignment.DB.Article;
+import com.graduateassignment.DB.ArticleCategory;
 import com.graduateassignment.DB.Subscribe;
 import com.graduateassignment.DB.User;
 import com.graduateassignment.R;
+import com.graduateassignment.Util.ToastUtil;
 
 import java.util.List;
 
@@ -38,6 +40,7 @@ public class MeArticlesFragment extends Fragment {
     private TextView emptyTextView;//空数据文字
     private ArticleAdapter articleAdapter;//关注列表适配器
     private static final String ARG_PARAM1 = "param1";
+    private List<ArticleCategory> articleCategories;
 
     public static Fragment newInstance(User user){
         MeArticlesFragment meArticlesFragment = new MeArticlesFragment();
@@ -72,13 +75,28 @@ public class MeArticlesFragment extends Fragment {
         recyclerView = (RecyclerView) getActivity().findViewById(R.id.frag_mearticle_listview);
         emptyTextView = (TextView) getActivity().findViewById(R.id.frag_mearticle_emptytext);
         if(mUser!=null) {
-            initView();
+            getArticleCategorys();
         }else{
             //设置空布局
             recyclerView.setVisibility(View.GONE);
             emptyTextView.setVisibility(View.VISIBLE);
             emptyTextView.setText("登录后就可以查看自己发表的文章了哦~~!");
         }
+    }
+
+    private void getArticleCategorys(){
+        BmobQuery<ArticleCategory> articleCategoryBmobQuery = new BmobQuery<>();
+        articleCategoryBmobQuery.findObjects(new FindListener<ArticleCategory>() {
+            @Override
+            public void done(List<ArticleCategory> list, BmobException e) {
+                if(e==null){
+                    articleCategories = list;
+                    initView();
+                }else{
+                    ToastUtil.show(getActivity(),"获取文章类别失败");
+                }
+            }
+        });
     }
 
     //初始化布局
@@ -101,7 +119,7 @@ public class MeArticlesFragment extends Fragment {
                             //为recyclerView设置布局管理器
                             recyclerView.setLayoutManager(layoutManager);
                             //初始化adapter
-                            ArticleAdapter articleAdapter = new ArticleAdapter(R.layout.item_articletitle,list);
+                            ArticleAdapter articleAdapter = new ArticleAdapter(R.layout.item_articletitle,list,articleCategories);
                             //为子项设置点击事件
                             articleAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                                 @Override

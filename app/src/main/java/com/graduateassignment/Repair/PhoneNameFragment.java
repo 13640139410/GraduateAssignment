@@ -1,6 +1,7 @@
-package com.graduateassignment.Fragment;
+package com.graduateassignment.Repair;
 
 
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.graduateassignment.Adapter.PhoneNameAdapter;
 import com.graduateassignment.DB.PhoneModel;
 import com.graduateassignment.R;
@@ -76,6 +78,14 @@ public class PhoneNameFragment extends Fragment {
                     recyclerView.setLayoutManager(linearLayoutManager);
                     PhoneNameAdapter phoneNameAdapter = new PhoneNameAdapter(R.layout.item_phone,list);
                     recyclerView.setAdapter(phoneNameAdapter);
+                    phoneNameAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                            Intent intent = new Intent(getActivity(),FillInOrderActivity.class);
+                            intent.putExtra(ARG_PARAM1,(PhoneModel)adapter.getItem(position));
+                            getActivity().startActivity(intent);
+                        }
+                    });
                 }else{
                     ToastUtil.show(getActivity(),e.getMessage());
                 }
